@@ -50,11 +50,6 @@
                             <th class="px-4 py-3 text-left">First Name</th>
                             <th class="px-4 py-3 text-left">Middle Name</th>
                             <th class="px-4 py-3 text-left">Email</th>
-                            <th class="px-4 py-3 text-left">Birthdate</th>
-                            <th class="px-4 py-3 text-left">Age</th>
-                            <th class="px-4 py-3 text-left">Gender</th>
-                            <th class="px-4 py-3 text-left">Created At</th>
-                            <th class="px-4 py-3 text-left">Modified At</th>
                             <th class="px-4 py-3 text-right w-40">Actions</th>
                         </tr>
                     </thead>
@@ -69,13 +64,10 @@
                                     <a href="mailto:{{ $user->email }}"
                                         class="text-indigo-600 hover:text-indigo-800 hover:underline">{{ $user->email }}</a>
                                 </td>
-                                <td class="px-4 py-3 text-gray-700">{{ $user->birthdate_formatted }}</td>
-                                <td class="px-4 py-3 text-gray-700">{{ $user->age }}</td>
-                                <td class="px-4 py-3 text-gray-700">{{ $user->gender }}</td>
-                                <td class="px-4 py-3 text-gray-700">{{ $user->created_at_formatted }}</td>
-                                <td class="px-4 py-3 text-gray-700">{{ $user->updated_at_formatted }}</td>
                                 <td class="px-4 py-3 text-right">
                                     <div class="flex items-center justify-end gap-2">
+                                        <a href="{{ url('view/' . $user->id) }}"
+                                            class="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-indigo-50">View</a>
                                         <a href="{{ url('edit/' . $user->id) }}"
                                             class="rounded-md border border-indigo-200 px-3 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-50">Edit</a>
                                         <form method="post" action="{{ url('delete', $user->id) }}" class="inline"

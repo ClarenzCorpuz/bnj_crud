@@ -26,6 +26,12 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function view($id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.view', compact('user'));
+    }
+
     public function addSave(saveUserRequest $request)
     {
         User::create($request->all());

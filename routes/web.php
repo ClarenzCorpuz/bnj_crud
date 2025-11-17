@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/', 'index');
+    Route::get('view/{id}', 'view');
     Route::view('add', 'users.add');
     Route::get('edit/{id}', 'edit');
     Route::post('add-save', 'addSave');
