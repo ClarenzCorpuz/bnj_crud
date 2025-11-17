@@ -26,38 +26,56 @@
 						<div>
 							<label for="lastname" class="block text-sm font-medium text-gray-700">Last Name</label>
 							<input type="text" name="lastname" id="lastname" required
-								   value="{{ $user->lastname }}"
+								   value="{{ old('lastname', $user->lastname) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('lastname')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div>
 							<label for="firstname" class="block text-sm font-medium text-gray-700">First Name</label>
 							<input type="text" name="firstname" id="firstname" required
 								   value="{{ old('firstname', $user->firstname) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('firstname')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div class="md:col-span-2">
 							<label for="middlename" class="block text-sm font-medium text-gray-700">Middle Name</label>
 							<input type="text" name="middlename" id="middlename"
 								   value="{{ old('middlename', $user->middlename) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('middlename')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div class="md:col-span-2">
 							<label for="email" class="block text-sm font-medium text-gray-700">Email</label>
 							<input type="email" name="email" id="email" required
 								   value="{{ old('email', $user->email) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('email')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div>
 							<label for="birthdate" class="block text-sm font-medium text-gray-700">Birthdate</label>
 							<input type="date" name="birthdate" id="birthdate" required
 								   value="{{ old('birthdate', $user->birthdate) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('birthdate')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div>
 							<label for="age" class="block text-sm font-medium text-gray-700">Age</label>
 							<input type="number" name="age" id="age" required
 								   value="{{ old('age', $user->age) }}"
 								   class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200">
+							@error('age')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 						<div class="md:col-span-2">
 							<label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
@@ -68,6 +86,9 @@
 								<option value="male" {{ $gender === 'male' ? 'selected' : '' }}>Male</option>
 								<option value="female" {{ $gender === 'female' ? 'selected' : '' }}>Female</option>
 							</select>
+							@error('gender')
+								<span class="text-red-500 text-xs">{{ $message }}</span>
+							@enderror
 						</div>
 					</div>
 					<div class="mt-6 flex justify-end gap-3">

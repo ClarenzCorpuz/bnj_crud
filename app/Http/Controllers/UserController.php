@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\saveUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -25,17 +26,8 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function addSave(Request $request)
+    public function addSave(saveUserRequest $request)
     {
-        $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'middlename' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'birthdate' => 'required|date',
-            'age' => 'required|integer|min:0',
-        ]);
-
         User::create($request->all());
 
         return redirect('/')->with('success', 'User added successfully');
@@ -47,17 +39,8 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function editSave(Request $request, $id)
+    public function editSave(saveUserRequest $request, $id)
     {
-        $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'middlename' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'birthdate' => 'required|date',
-            'age' => 'required|integer|min:0',
-        ]);
-
         $user = User::findOrFail($id);
         $user->update($request->all());
 
