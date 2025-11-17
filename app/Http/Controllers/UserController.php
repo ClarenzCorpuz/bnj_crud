@@ -38,7 +38,7 @@ class UserController extends Controller
 
         User::create($request->all());
 
-        return redirect('/')->with('success', 'User added successfully!');
+        return redirect('/')->with('success', 'User added successfully');
     }
 
     public function edit($id)
@@ -61,7 +61,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        return redirect('/')->with('success', 'User updated successfully!');
+        return redirect('/')->with('success', 'User updated successfully');
     }
 
     public function destroy($id)
@@ -69,6 +69,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/')->with('success', 'User deleted successfully!');
+        return redirect('/')->with('success', 'User deleted successfully');
     }
 }
