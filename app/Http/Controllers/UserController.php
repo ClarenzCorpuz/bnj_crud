@@ -3,25 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\saveUserRequest;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
     public function index(Request $request)
     {
-        $users = User::when($request->input('search'),
+        $users = User::when(
+            $request->input('search'),
             function ($query, $search) {
                 $query->where('firstname', 'like', "%{$search}%")
-                      ->orWhere('lastname', 'like', "%{$search}%")
-                      ->orWhere('middlename', 'like', "%{$search}%")
-                      ->orWhere('gender', 'like', "%{$search}%")
-                      ->orWhere('age', 'like', "%{$search}%")
-                      ->orWhere('email', 'like', "%{$search}%");
+                ->orWhere('lastname', 'like', "%{$search}%")
+                    ->orWhere('middlename', 'like', "%{$search}%")
+                    ->orWhere('gender', 'like', "%{$search}%")
+                    ->orWhere('age', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
             }
         )->paginate(5);
 
-        $users->appends($request->query()); 
+        $users->appends($request->query());
 
         return view('users.index', compact('users'));
     }
